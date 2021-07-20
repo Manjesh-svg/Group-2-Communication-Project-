@@ -33,6 +33,7 @@ public class AdminGUI implements AdminUserInterface {
 				break;
 			case 2:
 				doSave();
+				System.exit(2);
 				break;
 			default: // do nothing
 			}
@@ -53,7 +54,7 @@ public class AdminGUI implements AdminUserInterface {
 		int choice;
 
 		do {
-			choice = JOptionPane.showOptionDialog(null, udb.getInfo(user) + "\n" + "Edit Info:" + "\n", "DVD Collection",
+			choice = JOptionPane.showOptionDialog(null, udb.getInfo(user) + "\n" + "Edit Info:" + "\n", "User Database",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, commands,
 					commands[commands.length - 1]);
 			
@@ -73,7 +74,6 @@ public class AdminGUI implements AdminUserInterface {
 				if (newPass == null) {
 					return; // dialog was cancelled
 				}
-				newPass = newPass.toUpperCase();
 				udb.addOrModifyUser(word[0], newPass , word[2], word[3]);
 				break;
 			case 2:
@@ -81,6 +81,7 @@ public class AdminGUI implements AdminUserInterface {
 				if (newFirst == null) {
 					return; // dialog was cancelled
 				}
+				newFirst = newFirst.toUpperCase();
 				udb.addOrModifyUser(word[0], word[1] , newFirst, word[3]);
 				break;
 			case 3:
@@ -88,6 +89,7 @@ public class AdminGUI implements AdminUserInterface {
 				if (newLast == null) {
 					return; // dialog was cancelled
 				}
+				newLast = newLast.toUpperCase();
 				udb.addOrModifyUser(word[0], word[1] , word[2], newLast);
 				break;
 			default: // do nothing
@@ -98,14 +100,14 @@ public class AdminGUI implements AdminUserInterface {
 	}
 
 	private void doRemoveUser() {
-		String user = JOptionPane.showInputDialog("Enter Username");
+		String user = JOptionPane.showInputDialog(udb.getNames() + "\n" + "Enter Username: ");
 		if (user == null) {
 			return; // dialog was cancelled
 		}
 		user = user.toUpperCase();
 		udb.removeUser(user);
 
-		JOptionPane.showMessageDialog(null, "Removing: " + user + "\n" + udb);
+		JOptionPane.showMessageDialog(null, "Removing: " + user);
 	}
 
 

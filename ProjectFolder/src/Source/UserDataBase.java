@@ -107,9 +107,9 @@ public class UserDataBase {
 		for (int i = 0; i < numUsers; i++) {
 			if (Username.equals(this.userArray[i].getUser())) {
 				temp += this.userArray[i].getUser() + "/";
-				temp += userArray[i].getPass() + "/";
-				temp += userArray[i].getfName()+ "/";
-				temp += userArray[i].getlName();
+				temp += this.userArray[i].getPass() + "/";
+				temp += this.userArray[i].getfName()+ "/";
+				temp += this.userArray[i].getlName();
 				break;
 			}
 		}

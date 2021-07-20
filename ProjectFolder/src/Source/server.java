@@ -1,4 +1,4 @@
-package server;
+package Source;
 
 import java.io.*;
 import java.net.*; 
@@ -7,7 +7,7 @@ import java.net.*;
 public class server { 
 
 	public static void buildconnetion() { 
-		System.out.println("Configuring the serve "); 												// socket = ip address + port number 
+		System.out.println("Configuring the server "); 												// socket = ip address + port number 
 		int port = 6868; 
 		ServerSocket socket = null;  
 		int count = 0; 

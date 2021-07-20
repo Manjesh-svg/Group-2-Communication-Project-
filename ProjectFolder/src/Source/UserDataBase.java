@@ -38,10 +38,10 @@ public class UserDataBase {
 			userArray = new User[this.numUsers * 2];
 			System.arraycopy(temp, 0, userArray, 0, numUsers);
 			for (int i = 0; i < numUsers; i++) {
-				if (Username.equals(this.userArray[i].GetUser())) {
-					userArray[i].SetPass(Password);
-					userArray[i].SetFirstName(fName);
-					userArray[i].SetLastName(lName);
+				if (Username.equals(this.userArray[i].getUser())) {
+					userArray[i].setPass(Password);
+					userArray[i].setFirstName(fName);
+					userArray[i].setLastName(lName);
 					return;
 				}
 			}
@@ -51,10 +51,10 @@ public class UserDataBase {
 			this.alphaOrder();
 		} else if (this.numUsers != 0) {
 			for (int i = 0; i < this.numUsers; i++) {
-				if (Username.equals(this.userArray[i].GetUser())) {
-					userArray[i].SetPass(Password);
-					userArray[i].SetFirstName(fName);
-					userArray[i].SetLastName(lName);
+				if (Username.equals(this.userArray[i].getUser())) {
+					userArray[i].setPass(Password);
+					userArray[i].setFirstName(fName);
+					userArray[i].setLastName(lName);
 					return;
 				}
 			}
@@ -73,10 +73,47 @@ public class UserDataBase {
 			String line = temp.nextLine();
 			String[] word = line.split(",");
 			if (word.length == 4) {
-				addOrModifyUser(word[0], word[1], word[2],word[4]);
+				addOrModifyUser(word[0], word[1], word[2],word[3]);
 			}
 		}
 		temp.close();
+	}
+	
+	public void removeUser(String username) {
+		for (int i = 0; i < this.numUsers; i++) {
+			if (userArray[i].getUser().contains(username)) {
+				this.numUsers = this.numUsers - 1;
+				for (int x = i; x < this.numUsers; x++) {
+					userArray[i].setUser(userArray[x + 1].getUser());
+					userArray[i].setPass(userArray[x + 1].getPass());
+					userArray[i].setFirstName(userArray[x + 1].getfName());
+					userArray[i].setLastName(userArray[x + 1].getlName());
+				}
+			}
+		}
+		this.alphaOrder();
+	}
+	
+	public String getNames() {
+		String temp = "";
+		for(int i = 0; i < numUsers; i++) {
+			temp += userArray[i].getUser() + ", " + userArray[i].getlName() +", " + userArray[i].getfName() + "\n";
+		}
+		return temp;
+	}
+	
+	public String getInfo(String Username) {
+		String temp = "";
+		for (int i = 0; i < numUsers; i++) {
+			if (Username.equals(this.userArray[i].getUser())) {
+				temp += this.userArray[i].getUser() + "/";
+				temp += userArray[i].getPass() + "/";
+				temp += userArray[i].getfName()+ "/";
+				temp += userArray[i].getlName();
+				break;
+			}
+		}
+		return temp;
 	}
 
 	public void save() throws IOException {
@@ -90,7 +127,7 @@ public class UserDataBase {
 	
 	private void alphaOrder() {
 		Arrays.sort(userArray, 0, this.numUsers, (x, y) -> {
-			return x.GetlName().compareTo(y.GetlName());
+			return x.getlName().compareTo(y.getlName());
 		});
 	}
 	

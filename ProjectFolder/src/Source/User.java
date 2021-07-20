@@ -7,45 +7,45 @@ public class User {
 	private String LastName;
 	
 	public User(String Username,String Password,String fName, String lName) {
-		SetUser(Username);
-		SetPass(Password);
-		SetFirstName(fName);
-		SetLastName(lName);
+		setUser(Username);
+		setPass(Password);
+		setFirstName(fName);
+		setLastName(lName);
 	}
 	
-	public void SetUser(String Username) {
+	public void setUser(String Username) {
 		this.username = Username;
 	}
 	
-	public void SetPass(String Password) {
+	public void setPass(String Password) {
 		this.password = Password;
 	}
 	
-	public void SetFirstName(String fName) {
+	public void setFirstName(String fName) {
 		this.FirstName = fName;
 	}
 	
-	public void SetLastName(String lName) {
+	public void setLastName(String lName) {
 		this.LastName = lName;
 	}
 	
-	public String GetUser() {
+	public String getUser() {
 		return this.username;
 	}
 	
-	public String GetPass() {
+	public String getPass() {
 		return this.password;
 	}
 	
-	public String GetfName() {
+	public String getfName() {
 		return this.FirstName;
 	}
 	
-	public String GetlName() {
+	public String getlName() {
 		return this.LastName;
 	}
 	
 	public String toString() {
-		return (GetUser() + "/" + GetPass() + "/" + GetfName() + "/" + GetlName());
+		return (getUser() + "/" + getPass() + "/" + getfName() + "/" + getlName());
 	}
 }

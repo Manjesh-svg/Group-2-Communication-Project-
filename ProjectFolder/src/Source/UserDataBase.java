@@ -115,6 +115,14 @@ public class UserDataBase {
 		}
 		return temp;
 	}
+	
+	public String getUsernames() {
+		String temp = "";
+		for(int i = 0; i< numUsers; i++) {
+			temp += userArray[i].getUser() + ",";
+		}
+		return temp;
+	}
 
 	public void save() throws IOException {
 		FileWriter outFile = new FileWriter(this.sourceName);

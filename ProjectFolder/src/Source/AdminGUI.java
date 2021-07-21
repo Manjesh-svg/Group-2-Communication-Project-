@@ -48,54 +48,82 @@ public class AdminGUI implements AdminUserInterface {
 			return; // dialog was cancelled
 		}
 		user = user.toUpperCase();
-
-		String[] commands = { "Username", "Password", "First Name", "Last Name", "Cancel" };
-
-		int choice;
-
-		do {
-			choice = JOptionPane.showOptionDialog(null, udb.getInfo(user) + "\n" + "Edit Info:" + "\n", "User Database",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, commands,
-					commands[commands.length - 1]);
-			
-			String[] word = udb.getInfo(user).split("/");
-
-			switch (choice) {
-			case 0:
-				String newUser = JOptionPane.showInputDialog(udb + "\n" + "Enter Username");
-				if (newUser == null) {
-					return; // dialog was cancelled
-				}
-				newUser = newUser.toUpperCase();
-				udb.addOrModifyUser(newUser, word[1] , word[2], word[3]);
+		String[] Users = udb.getUsernames().split(",");
+		boolean flag = true;
+		for(String i: Users) {
+			if(i.equalsIgnoreCase(user)) {
+				flag = false;
 				break;
-			case 1:
-				String newPass = JOptionPane.showInputDialog("Enter new Password for " + user);
-				if (newPass == null) {
-					return; // dialog was cancelled
-				}
-				udb.addOrModifyUser(word[0], newPass , word[2], word[3]);
-				break;
-			case 2:
-				String newFirst = JOptionPane.showInputDialog("Enter new First Name for " + user);
-				if (newFirst == null) {
-					return; // dialog was cancelled
-				}
-				newFirst = newFirst.toUpperCase();
-				udb.addOrModifyUser(word[0], word[1] , newFirst, word[3]);
-				break;
-			case 3:
-				String newLast = JOptionPane.showInputDialog("Enter new Last Name for " + user);
-				if (newLast == null) {
-					return; // dialog was cancelled
-				}
-				newLast = newLast.toUpperCase();
-				udb.addOrModifyUser(word[0], word[1] , word[2], newLast);
-				break;
-			default: // do nothing
 			}
+		}
+		
+		if(flag) {
+			String newPassword = JOptionPane.showInputDialog(user + "\n" + "Enter Password");
+			if (newPassword == null) {
+				return; // dialog was cancelled
+			}
+			String firstName = JOptionPane.showInputDialog(user + "\n" + "Enter First Name");
+			if (firstName == null) {
+				return; // dialog was cancelled
+			}
+			String lastName = JOptionPane.showInputDialog(user + "\n" + "Enter Last Name");
+			if (lastName == null) {
+				return; // dialog was cancelled
+			}
+			udb.addOrModifyUser(user, newPassword, firstName, lastName);
+		}
+		else {
+			String[] commands = { "Username", "Password", "First Name", "Last Name", "OK" };
 
-		} while (choice != commands.length - 1);
+			int choice;
+
+			do {
+				choice = JOptionPane.showOptionDialog(null, udb.getInfo(user) + "\n" + "Edit Info:" + "\n", "User Database",
+						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, commands,
+						commands[commands.length - 1]);
+				
+				String[] word = udb.getInfo(user).split("/");
+
+				switch (choice) {
+				case 0:
+					String newUser = JOptionPane.showInputDialog(user + "\n" + "Enter new Username");
+					if (newUser == null) {
+						return; // dialog was cancelled
+					}
+					newUser = newUser.toUpperCase();
+					udb.addOrModifyUser(newUser, word[1] , word[2], word[3]);
+					udb.removeUser(user);
+					user = newUser;
+					break;
+				case 1:
+					String newPass = JOptionPane.showInputDialog("Enter new Password for " + user);
+					if (newPass == null) {
+						return; // dialog was cancelled
+					}
+					udb.addOrModifyUser(word[0], newPass , word[2], word[3]);
+					break;
+				case 2:
+					String newFirst = JOptionPane.showInputDialog("Enter new First Name for " + user);
+					if (newFirst == null) {
+						return; // dialog was cancelled
+					}
+					newFirst = newFirst.toUpperCase();
+					udb.addOrModifyUser(word[0], word[1] , newFirst, word[3]);
+					break;
+				case 3:
+					String newLast = JOptionPane.showInputDialog("Enter new Last Name for " + user);
+					if (newLast == null) {
+						return; // dialog was cancelled
+					}
+					newLast = newLast.toUpperCase();
+					udb.addOrModifyUser(word[0], word[1] , word[2], newLast);
+					break;
+				default: // do nothing
+				}
+
+			} while (choice != commands.length - 1);
+
+		}
 
 	}
 

@@ -29,6 +29,7 @@ class UserTestCases {
 		assertNotNull(user.getlName());
 	}
 	
+	
 // Testing User Object Types
 	@Test
 	void TestUsernameType() {

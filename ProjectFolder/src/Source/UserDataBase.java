@@ -149,4 +149,8 @@ public class UserDataBase {
 		return true;
 		
 	}
+	
+	public Users[] getUsers() { 
+		return Users[]; 
+	}
 }

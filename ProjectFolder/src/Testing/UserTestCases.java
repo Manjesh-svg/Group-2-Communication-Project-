@@ -28,7 +28,16 @@ class UserTestCases {
 		User user = new User("username", "password", "John", "Smith");
 		assertNotNull(user.getlName());
 	}
-	
+	@Test
+	void testConstructorFunctionalityNumChat() {
+		User user = new User("username", "password", "John", "Smith");
+		assertNotNull(user.getnumChat());
+	}
+	@Test
+	void testConstructorFunctionalityChatArray() {
+		User user = new User("username", "password", "John", "Smith");
+		assertNotNull(user.getChatID());
+	}
 	
 // Testing User Object Types
 	@Test
@@ -101,6 +110,51 @@ class UserTestCases {
 		User user = new User("username", "password", "John", "Smith");
 		user.setLastName("notSmith");
 		assertEquals("notSmith", user.getlName());
+	}
+
+// Testing Chat Array Functionality
+	@Test
+	void testingChatArraylength() {
+		User user = new User("username", "password", "John", "Smith");
+		assertEquals(1000,user.getChatID().length);
+	}
+	
+	@Test
+	void testingaddChatIDfunction() {
+		User user = new User("username", "password", "John", "Smith");
+		for(int i = 0; i < 70; i++) {
+			user.addChatID("CR" + i);
+		}
+		assertEquals("CR69",user.getChatID()[69]);
+	}
+	
+	@Test
+	void testingremoveChatIDfunction() {
+		User user = new User("username", "password", "John", "Smith");
+		for(int i = 1; i < 6; i++) {
+			user.addChatID("CR" + i);
+		}
+		user.removeChatID("CR1");
+		assertEquals("CR2",user.getChatID()[0]);
+	}
+	
+	@Test
+	void testinggetnumChatFunction() {
+		User user = new User("username", "password", "John", "Smith");
+		for(int i = 0; i < 70; i++) {
+			user.addChatID("CR" + i);
+		}
+		assertEquals(70,user.getnumChat());
+	}
+	
+	@Test
+	void testingChattoStringFunction(){
+		User user = new User("username", "password", "John", "Smith");
+		for(int i = 1; i < 5; i++) {
+			user.addChatID("CR" + i);
+		}
+		System.out.println(user.chatToString());
+		assertEquals("CR1, CR2, CR3, CR4",user.chatToString());
 	}
 		
 // Testing toString()

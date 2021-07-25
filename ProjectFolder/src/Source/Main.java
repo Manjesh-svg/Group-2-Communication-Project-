@@ -1,4 +1,4 @@
-package com.codewithmanisha;
+package Source;
 
 public class Main {
 

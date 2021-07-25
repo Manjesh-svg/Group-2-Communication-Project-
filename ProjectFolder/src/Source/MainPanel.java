@@ -1,5 +1,7 @@
 package Source;
 
+import java.net.Socket;
+
 import javax.swing.*; 
 
 
@@ -8,7 +10,7 @@ public class MainPanel extends javax.swing.JPanel  {
 
 	
 
-    public static void main(String string){
+    public static void main(Socket socket){
 
         MainPanel main=new MainPanel();
         main.setVisible(true);

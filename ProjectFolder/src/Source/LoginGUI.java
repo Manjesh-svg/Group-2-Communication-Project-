@@ -17,8 +17,7 @@ public class LoginGUI extends MainPanel{
 	private static JPasswordField passwordText;
 	private static Socket socket; 
 	 private static String server = "127.0.0.1";         // the ip address the server is being run on
-	 
-	
+	 private static int count = 0; 
 	
 	public static void buildGUI() throws UnknownHostException, IOException { 
 		//try(Socket socket = new Socket(server, 6868)){              // if the server is running, and the client
@@ -62,7 +61,6 @@ public class LoginGUI extends MainPanel{
 				// TODO Auto-generated method stu
 				String user = userText.getText(); 
 				String password = passwordText.getText(); 
-				System.out.println(user + ", " + password);
 				
 				
 				PrintWriter out;
@@ -77,17 +75,19 @@ public class LoginGUI extends MainPanel{
 		                
 		  
 		                // sending the user input to server
-		                out.println(user + "," + password);
+		                out.println("login" + "," + user + "," + password);
 		                out.flush();
-		                if(in.readLine(). contains("true")) { 
+		                if(in.readLine().contains("true")) { 
 //		                	System.out.println("Login Successful"); 
 		                	
-		                	MainPanel.main("Hello wold");
+		                	MainPanel.main(socket);
 		                	
 		                	break;
 		                }
+		         
 		                else { 
 		                	System.out.println("Try Again");
+		                	count++; 
 		                	break;
 		                	
 		                }
@@ -106,10 +106,10 @@ public class LoginGUI extends MainPanel{
 		
 		
 		frame.setVisible(true);
-	}
-	//return; 
-//}
-
+		if(count == 2) { 
+			System.exit(count); 
+		}
+		}
 		
 		public static void main(String[] args) { 
 			try {

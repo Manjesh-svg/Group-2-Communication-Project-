@@ -61,10 +61,14 @@ public class handler implements Runnable {
 
             String line;
             while ((line = reader.readLine()) != null) {
-
-                String loginns[] = new String[2];
-                        loginns = line.split(",");
-                writer.println(loggin.containsKey(loginns[0]));
+            	if(line.contains("login")); 
+            	{ 
+            		String loginns[] = new String[2];
+                    loginns = line.split(",");
+                    writer.println(loggin.containsKey(loginns[1]));
+            		
+            	}
+                
             }
         } catch (IOException e) {
             e.printStackTrace();

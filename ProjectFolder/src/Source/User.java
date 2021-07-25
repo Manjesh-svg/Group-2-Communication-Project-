@@ -1,6 +1,5 @@
 package Source;
 
-
 public class User {
 	private String username;
 	private String password;
@@ -20,6 +19,10 @@ public class User {
 		setnumChat(0);
 		newChatlist();
 	}
+
+	public void newChatlist() {
+		chatID = new String[ArraySize];
+	}
 	
 	public void setUser(String Username) {
 		this.username = Username;
@@ -35,30 +38,6 @@ public class User {
 	
 	public void setLastName(String lName) {
 		this.LastName = lName;
-	}
-	
-	public String getUser() {
-		return this.username;
-	}
-	
-	public String getPass() {
-		return this.password;
-	}
-	
-	public String getfName() {
-		return this.FirstName;
-	}
-	
-	public String getlName() {
-		return this.LastName;
-	}
-	
-	public String toString() {
-		return (getUser() + "/" + getPass() + "/" + getfName() + "/" + getlName());
-	}
-	
-	public void newChatlist() {
-		chatID = new String[ArraySize];
 	}
 	
 	public void addChatID(String ID) {
@@ -81,6 +60,22 @@ public class User {
 		}
 	}
 	
+	public String getUser() {
+		return this.username;
+	}
+	
+	public String getPass() {
+		return this.password;
+	}
+	
+	public String getfName() {
+		return this.FirstName;
+	}
+	
+	public String getlName() {
+		return this.LastName;
+	}
+	
 	public int getnumChat() {
 		return this.numChat;
 	}
@@ -89,13 +84,15 @@ public class User {
 		return chatID;
 	}
 	
+	public String toString() {
+		return (getUser() + "/" + getPass() + "/" + getfName() + "/" + getlName());
+	}
 	
 	public String chatToString() {
 		String temp = "";
 		for(int i = 0; i < numChat; i++) {
-			temp += (chatID[i] + ", ");
+			temp += chatID[i];
 		}
-		temp = temp.substring(0,temp.length()-2);
 		return temp;
 	}
 }

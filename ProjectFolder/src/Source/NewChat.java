@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 public class NewChat extends javax.swing.JPanel {
 
-    public static void main(String args[]){
+    public static void main(String string){
 
         NewChat chat=new NewChat();
         chat.setVisible(true);

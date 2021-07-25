@@ -1,11 +1,14 @@
 package Source;
 
-import javax.swing.JFrame;
+import javax.swing.*; 
 
 
-public class MainPanel extends javax.swing.JPanel {
+public class MainPanel extends javax.swing.JPanel  {
+	
 
-    public static void main(String args[]){
+	
+
+    public static void main(String string){
 
         MainPanel main=new MainPanel();
         main.setVisible(true);
@@ -54,6 +57,7 @@ public class MainPanel extends javax.swing.JPanel {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+                ChatRoom.main("Hello world ");
             }
         });
 

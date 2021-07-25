@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.awt.event.ActionListener;
 
 import javax.swing.*; 
-public class LoginGUI{
+public class LoginGUI extends MainPanel{
 	
 	private static JLabel label;
 	private static JTextField userText;
@@ -80,7 +80,10 @@ public class LoginGUI{
 		                out.println(user + "," + password);
 		                out.flush();
 		                if(in.readLine(). contains("true")) { 
-		                	System.out.println("Login Successful"); 
+//		                	System.out.println("Login Successful"); 
+		                	
+		                	MainPanel.main("Hello wold");
+		                	
 		                	break;
 		                }
 		                else { 

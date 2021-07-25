@@ -1,5 +1,4 @@
 package Source;
-
 import java.io.*;
 import java.net.*;
 
@@ -23,7 +22,6 @@ public class server {
 
                 System.out.println("Listening on... " +  (localhost.getHostAddress()).trim() + ":6868");
 
-                System.out.println("Hello word ");
                 Socket connectionSocket = socket.accept();
                 handler clientSoc = new handler(connectionSocket);
                 System.out.println("New client successfully connected " + count++); // it will continue to listen until there is a 																	// new connection that is pottentially trying to

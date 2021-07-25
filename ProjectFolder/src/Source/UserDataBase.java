@@ -150,7 +150,24 @@ public class UserDataBase {
 		
 	}
 	
-	public Users[] getUsers() { 
-		return Users[]; 
+	// ******************* Check Username and Password *********************** // 
+public boolean checkUserNamePassword(String Username, String Password) { 
+		for(int count = 0; count < numUsers; count++) { 
+			
+			if(userArray[count].getUser().contains(Username) && userArray[count].getUser().contains(Password)) { 
+				return true;
+			}
+		}
+		
+		return false; 
 	}
+
+public User[] getUserInfo() { 
+	return userArray;
+}
+
+public int getUsers() { 
+	return this.numUsers; 
+}
+	
 }

@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 public class ChatRoom extends javax.swing.JPanel {
 
-    public static void main(String args[]){
+    public static void main(String string){
 
         ChatRoom chat=new ChatRoom();
         chat.setVisible(true);

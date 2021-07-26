@@ -150,6 +150,10 @@ public class UserDataBase {
 		
 	}
 	
+	public int getnumUsers() {
+		return this.numUsers;
+	}
+	
 	// ******************* Check Username and Password *********************** // 
 public boolean checkUserNamePassword(String Username, String Password) { 
 		for(int count = 0; count < numUsers; count++) { 
@@ -164,10 +168,6 @@ public boolean checkUserNamePassword(String Username, String Password) {
 
 public User[] getUserInfo() { 
 	return userArray;
-}
-
-public int getUsers() { 
-	return this.numUsers; 
 }
 	
 }

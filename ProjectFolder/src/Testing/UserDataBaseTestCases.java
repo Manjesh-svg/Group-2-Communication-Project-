@@ -27,7 +27,6 @@ class UserDataBaseTestCases {
 		UserDataBase udb = new UserDataBase();
 		udb.addOrModifyUser("username", "password02", "firstName", "lastName");
 		udb.addOrModifyUser("username", "password01", "Best", "Worst");
-		assertEquals()
 	}
 	
 }

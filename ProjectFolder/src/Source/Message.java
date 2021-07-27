@@ -1,3 +1,4 @@
+package Source;
 
 public class Message {
 	
@@ -14,7 +15,7 @@ public class Message {
 	}
 	
 	public String getSender() {
-		return sender.username;
+		return sender.getUser();
 	}
 
 }

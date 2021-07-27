@@ -1,3 +1,5 @@
+package Source;
+
 import java.util.Scanner;
 import java.io.*;
 
@@ -15,7 +17,7 @@ public class ClientGUI {
 	
 	
 	public ClientGUI() throws FileNotFoundException {
-		data.loadData();
+		data.loadData("userdata.txt");
 	}
 	
 	
@@ -211,7 +213,7 @@ public class ClientGUI {
 		{
 			index = 0;
 			while (index < data.getArraySize() ) {
-				if (selectedUser.toString().equals(list[index].username)) {
+				if (selectedUser.toString().equals(list[index].getUser())) {
 					return list[index];
 				}
 				

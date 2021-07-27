@@ -1,3 +1,4 @@
+package Source;
 
 import java.io.*;
 import java.net.*;
@@ -14,7 +15,7 @@ public class Handler implements Runnable {
         this.data = new UserDataBase();
 
         try {
-            data.loadData();
+            data.loadData("userdata.txt");
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

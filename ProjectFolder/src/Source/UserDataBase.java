@@ -169,5 +169,67 @@ public boolean checkUserNamePassword(String Username, String Password) {
 public User[] getUserInfo() { 
 	return userArray;
 }
+
+public boolean checkCredentials(String userInfo, String passInfo) {
+	int index = 0;
+	
+	// Navigate through array until user is found or array reaches end
+	while (userArray[index] != null) {
+		
+		// If User name is found
+		if (userArray[index].getUser().equals(userInfo)) {
+			
+			// Check password for user
+			if (userArray[index].getPass().equals(passInfo)) {
+				return true;
+			}
+			
+			else {
+				return false;
+			}
+		}
+		
+		index++;
+	}
+	
+	if (userArray[index] == null) {
+		return false;
+	}
+	
+	// return false since user name wasn't found
+	else {
+		return false;
+	}
+
+}
+
+public int getArraySize() {
+	return numUsers;
+}
+
+public String getUserName(User findUser) {
+	return findUser.getUser();	
+}
+public User getUser(int index) {
+	return userArray[index];
+}
+
+public User findUserString(String userLogged) {
+	int index = 0;
+	
+	// navigate the array
+	while (userArray[index] != null) {
+		
+		// compare names
+		if (userArray[index].getUser().equals(userLogged)) {
+			return userArray[index];
+		}
+		
+		index++;
+	}
+	
+	return userArray[index];
+	
+}
 	
 }

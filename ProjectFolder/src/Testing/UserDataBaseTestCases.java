@@ -22,11 +22,4 @@ class UserDataBaseTestCases {
 		assertEquals(1,udb.getnumUsers());
 	}
 	
-	@Test
-	void testAddorModifyexistingUser() {
-		UserDataBase udb = new UserDataBase();
-		udb.addOrModifyUser("username", "password02", "firstName", "lastName");
-		udb.addOrModifyUser("username", "password01", "Best", "Worst");
-	}
-	
 }

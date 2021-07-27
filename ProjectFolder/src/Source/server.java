@@ -1,10 +1,9 @@
-package Source;
+import java.util.*;
 import java.io.*;
-import java.net.*;
+import java.net.*; 
 
-
-public class server {
-
+public class Server {
+	
     public static void buildconnetion() {
         System.out.println("Configuring the server "); 												// socket = ip address + port number
         int port = 6868;
@@ -21,18 +20,28 @@ public class server {
                 InetAddress localhost = InetAddress.getLocalHost();
 
                 System.out.println("Listening on... " +  (localhost.getHostAddress()).trim() + ":6868");
+              
 
                 Socket connectionSocket = socket.accept();
-                handler clientSoc = new handler(connectionSocket);
+                
+                
+                //TO DELETE
+                InputStream inputStream = connectionSocket.getInputStream();
+                System.out.println(inputStream.toString());
+                
+                
+                Handler clientSocket = new Handler(connectionSocket);
                 System.out.println("New client successfully connected " + count++); // it will continue to listen until there is a 																	// new connection that is pottentially trying to
-                new Thread(clientSoc).start();										// creating a new thread....
+                new Thread(clientSocket).start();										// creating a new thread....
+               
+                
 
 
 
             }
 
         } catch (IOException e) {
-            System.out.println("There is something wrong with the connection, pelase try again");
+            System.out.println("There is something wrong with the connection, please try again");
             e.printStackTrace();
         }
     }
@@ -44,4 +53,5 @@ public class server {
     {
         buildconnetion();
     }
+
 }

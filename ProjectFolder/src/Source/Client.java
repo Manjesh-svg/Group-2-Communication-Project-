@@ -31,7 +31,7 @@ public class Client {
 				
 				int attempts = 0;
 				// Send back to login screen if failed
-				while (loginResponse.equals("false") && attempts < 3) {
+				while ("false".equals(loginResponse) && attempts < 3) {
 					JOptionPane.showMessageDialog(null, "Login Failed. Please Try Again!", "!thiscord", JOptionPane.INFORMATION_MESSAGE);
 					
 					loginInfo = cgui.loginScreen();
@@ -49,7 +49,7 @@ public class Client {
 				}
 				
 				// Access Main interface if successful
-				if (loginResponse.equals("true")) {
+				if ("true".equals(loginResponse)) {
 					
 					// Main Menu choice
 					cgui.processCommands();

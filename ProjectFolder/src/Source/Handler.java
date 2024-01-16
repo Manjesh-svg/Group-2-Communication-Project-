@@ -63,7 +63,7 @@ public class Handler implements Runnable {
         	
         	// Get user list
         	String answer = inputStream.readLine();
-        	if (answer.equals("create room")) {
+        	if ("create room".equals(answer)) {
         		String info = data.getUsernames();
         		
         		output.println(info);

@@ -1,5 +1,6 @@
 package Source;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -35,7 +36,7 @@ public class Handler implements Runnable {
         	
         	// Check Authentication
         	String toSplit;
-        	while ((toSplit = inputStream.readLine()) != null) {
+        	while ((toSplit = BoundedLineReader.readLine(inputStream, 5_000_000)) != null) {
         		
         		String[] clientInfo = toSplit.split(",");
         		
@@ -62,7 +63,7 @@ public class Handler implements Runnable {
         	PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);      	
         	
         	// Get user list
-        	String answer = inputStream.readLine();
+        	String answer = BoundedLineReader.readLine(inputStream, 5_000_000);
         	if (answer.equals("create room")) {
         		String info = data.getUsernames();
         		

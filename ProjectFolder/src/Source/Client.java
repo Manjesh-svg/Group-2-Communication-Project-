@@ -1,5 +1,6 @@
 package Source;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -27,7 +28,7 @@ public class Client {
 				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				out.println(loginInfo);
-				String loginResponse = in.readLine();
+				String loginResponse = BoundedLineReader.readLine(in, 5_000_000);
 				
 				int attempts = 0;
 				// Send back to login screen if failed
@@ -36,7 +37,7 @@ public class Client {
 					
 					loginInfo = cgui.loginScreen();
 					out.println(loginInfo);
-					loginResponse = in.readLine();
+					loginResponse = BoundedLineReader.readLine(in, 5_000_000);
 					
 					attempts++;
 				}
